@@ -50,6 +50,7 @@
 // Use this fo WizNET W5100 module and Arduino Ethernet Shield 
 //#include <Ethernet.h>   
 
+#define SERIAL_DEBUG        1
 
 #define INCLUSION_MODE_TIME 1 // Number of minutes inclusion mode is enabled
 #define INCLUSION_MODE_PIN  3 // Digital pin used for inclusion mode button
@@ -93,6 +94,7 @@ void setup()
 
   // start listening for clients
   server.begin();
+#ifdef SERIAL_DEBUG
   Serial.println("Tweaking4All.com - Temperature Drone - v2.0");
   Serial.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
   Serial.print("IP Address        : ");
@@ -104,6 +106,7 @@ void setup()
   Serial.print("DNS Server IP     : ");
   Serial.println(Ethernet.dnsServerIP());
   Serial.println(servers);
+#endif
 }
 
 // This will be called when data should be written to ethernet 
